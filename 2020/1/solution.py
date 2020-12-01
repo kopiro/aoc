@@ -17,7 +17,7 @@ def puzzle_optimized_2(lines):
 def puzzle_optimized_3(lines):
     lines_set = set(lines)
     for c in lines:
-        for d in lines:
+        for d in lines_set:
             k = 2020 - c - d
             if k in lines:
                 return c * d * k
