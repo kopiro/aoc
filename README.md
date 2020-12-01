@@ -1,6 +1,3 @@
-# AOC 2019
+# AOC
 
-Repository containing my solutions to Advent Of Code 2019.
-
-
-https://adventofcode.com/
+Solutions for https://adventofcode.com/
