@@ -30,19 +30,11 @@ def process_line_puzzle_2(line):
 
 
 def puzzle_1(lines):
-    count = 0
-    for line in lines:
-        if process_line_puzzle_1(line):
-            count += 1
-    return count
+    return sum(1 if process_line_puzzle_1(line) else 0 for line in lines)
 
 
 def puzzle_2(lines):
-    count = 0
-    for line in lines:
-        if process_line_puzzle_2(line):
-            count += 1
-    return count
+    return sum(1 if process_line_puzzle_2(line) else 0 for line in lines)
 
 
 if __name__ == "__main__":
