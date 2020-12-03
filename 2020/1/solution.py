@@ -6,7 +6,7 @@ from itertools import combinations
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
-def puzzle_optimized_2(lines):
+def puzzle_1(lines):
     lines_set = set(lines)
     for c in lines:
         k = 2020 - c
@@ -14,7 +14,7 @@ def puzzle_optimized_2(lines):
             return c * k
 
 
-def puzzle_optimized_3(lines):
+def puzzle_2(lines):
     lines_set = set(lines)
     for c in lines:
         for d in lines_set:
@@ -32,5 +32,5 @@ def puzzle_non_optimized(lines, count):
 if __name__ == "__main__":
     with open(dir_path + "/input.txt", "r") as f:
         lines = [int(line.strip()) for line in f.readlines()]
-    print(puzzle_optimized_2(lines))
-    print(puzzle_optimized_3(lines))
+    print(puzzle_1(lines))
+    print(puzzle_2(lines))
