@@ -17,16 +17,7 @@ def process_line_puzzle_1(line):
 
 def process_line_puzzle_2(line):
     idxa, idxb, char, word = re.findall("(\d+)-(\d+) ([a-z])\: (.+)", line)[0]
-    count = 0
-    for idx, ch in enumerate(word):
-        if ch == char:
-            if idx == (int)(idxa)-1:
-                count += 1
-            if idx == (int)(idxb)-1:
-                count += 1
-            if count > 1:
-                return False
-    return count == 1
+    return (word[(int)(idxa)-1] == char) ^ (word[(int)(idxb)-1] == char)
 
 
 def puzzle_1(lines):
