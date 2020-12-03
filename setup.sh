@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$AOC_SESSION" ]; then
+    echo "Please provide your cookie"
+    exit 1
+fi
+
 download_input() {
     year=$1
     day=$2
