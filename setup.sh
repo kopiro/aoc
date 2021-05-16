@@ -1,9 +1,22 @@
 #!/bin/bash
 
 if [ -z "$AOC_SESSION" ]; then
-    echo "Please provide your cookie"
+    echo "Please provide your cookie as AOC_SESSION"
     exit 1
 fi
+
+if [ -z "$1" ]; then
+    echo "Please provide your year"
+    exit 1
+fi
+
+if [ -z "$2" ]; then
+    echo "Please provide your day"
+    exit 1
+fi
+
+year=$1
+day=$2
 
 download_input() {
     year=$1
@@ -21,15 +34,7 @@ download_input() {
             -o "./${year}/${day}/input.txt" \
             --cookie "session=${AOC_SESSION}"
     fi
+    cp ./template/solution.py "./${year}/${day}/solution.py"
 }
 
-for year in $(seq 2017 2019); do
-    for day in $(seq 1 25); do
-        download_input $year $day
-    done
-done
-
-year=$(date +'%Y')
-for day in $(seq 1 "$(date +'%d')"); do
-    download_input $year $day
-done
+download_input $year $day

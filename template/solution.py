@@ -4,6 +4,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 def puzzle_1(lines):
+    return False
 
 
 def puzzle_2(lines):
