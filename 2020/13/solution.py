@@ -64,8 +64,8 @@ def puzzle_2(lines):
         to_add = (sol * prod * x)
         s += to_add
     max_mul = s//mod_prod
-    result_neg = abs(s - ((max_mul-1) * mod_prod))
-    result_pos = abs(s - ((max_mul+1) * mod_prod))
+    result_neg = abs(s - ((max_mul+1) * mod_prod))
+    result_pos = abs(s - ((max_mul-1) * mod_prod))
     return min(result_neg, result_pos)
 
 

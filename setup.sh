@@ -15,12 +15,15 @@ if [ -z "$2" ]; then
     exit 1
 fi
 
-year=$1
-day=$2
+if [ -z "$3" ]; then
+    echo "Please provide your language: python, rust"
+    exit 1
+fi
 
 download_input() {
     year=$1
     day=$2
+    lang=$3
     mkdir -p "./${year}/${day}"
     if [ ! -f "./${year}/${day}/input.html" ]; then
         echo "Downloading HTML input ${year}/${day}..."
@@ -37,4 +40,4 @@ download_input() {
     cp ./template/solution.py "./${year}/${day}/solution.py"
 }
 
-download_input $year $day
+download_input $1 $2 $3
