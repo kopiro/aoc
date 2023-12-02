@@ -35,6 +35,9 @@ download_input() {
     elif [ "$lang" = "python" ]; then
         mkdir -p "./${year}/${day}"
         cp "./template/main.py" "./${year}/${day}/main.py"
+    elif [ "$lang" = "javascript" ]; then
+        mkdir -p "./${year}/${day}"
+        cp "./template/main.js" "./${year}/${day}/main.js"
     else
         echo "Language $lang not supported"
     fi
