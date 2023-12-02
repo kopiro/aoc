@@ -16,7 +16,7 @@ if [ -z "$2" ]; then
 fi
 
 if [ -z "$3" ]; then
-    echo "Please provide your language: python, rust"
+    echo "Please provide your language: python, rust, javascript"
     exit 1
 fi
 
