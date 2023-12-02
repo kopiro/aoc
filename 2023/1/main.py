@@ -16,7 +16,6 @@ k_english_numbers = {
 }
 
 def puzzle_1(lines):
-    # for each line of string find first the first occurence of number, last number and sum them
     sum = 0
     for l in lines:
         first = None
