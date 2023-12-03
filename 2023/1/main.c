@@ -36,7 +36,7 @@ void puzzle_one() {
 		result = result + (unsigned long)s;
 	}
 
-	printf("Result: %lu", result);
+	printf("Result: %lu \n", result);
 }
 
 
@@ -75,7 +75,6 @@ unsigned int parse_line_puzzle_two(char* line) {
 		}
 	}
 
-	printf("ab: %s %s\n", line, ab);	
 	return atoi(ab);
 }
 
@@ -85,22 +84,21 @@ void puzzle_two() {
 	while (fgets(line, MAXSIZE, fptr) != NULL) {
 		int s = parse_line_puzzle_two(line);
 		result = result + (unsigned long)s;
-		printf("Line: %s - Result: %d\n\n", line, s);
 	}
 
-	printf("Result: %lu", result);
+	printf("Result: %lu \n", result);
 }
 
 
 int main() {
- 	fptr = fopen("/Users/flaviod/Developer/aoc/2023/1/example.txt", "r");
+ 	fptr = fopen("input.txt", "r");
 	
 	if (fptr == NULL) {
 		perror("Error opening file");
 		return 1;
 	}
 	 
-	/* puzzle_one(); */
+	// puzzle_one();
 	puzzle_two();
 	
 	fclose(fptr);
