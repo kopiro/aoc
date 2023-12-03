@@ -2,22 +2,6 @@ import os
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-# The engine schematic (your puzzle input) consists of a visual representation of the engine. There are lots of numbers and symbols you don't really understand, but apparently any number adjacent to a symbol, even diagonally, is a "part number" and should be included in your sum. (Periods (.) do not count as a symbol.)
-"""
-Here is an example engine schematic:
-
-467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598..
-"""
-
 def is_number_or_dot(char):
     return char.isdigit() or char == "."
 
