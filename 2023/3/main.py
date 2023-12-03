@@ -8,7 +8,7 @@ def is_number_or_dot(char):
 # Map with all cooordinates already been added so we can skip them
 added_coordinates = {}
 
-def match_number_until_digit(line, x, y, originator_x, originator_y):
+def match_number_until_digit(line, x, y):
     if not line[x].isdigit():
         return None
     number = ""
@@ -48,7 +48,7 @@ def puzzle_1(lines):
                             continue
                         if _x == 0 and _y == 0:
                             continue
-                        number = match_number_until_digit(lines[y+_y], x+_x, y+_y, x, y)
+                        number = match_number_until_digit(lines[y+_y], x+_x, y+_y
                         if number:
                             numbers.append(number)
     result = sum(numbers)
