@@ -10,16 +10,16 @@ char line[MAXSIZE];
 char* words[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
 unsigned int parse_line_puzzle_one(char* line) {
-	char a, b, ab[3];
+	char a = 'X', b = 'X', ab[3];
 	int i, len = strlen(line);
 	for (i = 0; i < len; i++) {
-		if (isdigit(line[i])) {
+		if (isdigit((int)line[i])) {
 			a = line[i];
 			break;
 		}
 	}
 	for (i = len-1; i >= 0; i--) {
-		if (isdigit(line[i])) {
+		if (isdigit((int)line[i])) {
 			b = line[i];
 			break;
 		}
@@ -53,7 +53,7 @@ unsigned int parse_line_puzzle_two(char* line) {
 	
 		for (i = (verse == 1) ? 0 : len-1; (verse == 1) ? i < len : i >= 0; i += verse) {
 			if (found == 1) break;
-			if (isdigit(line[i])) {
+			if (isdigit((int)line[i])) {
 				ab[index] = line[i];
 				found = 1;
 				break;
@@ -90,8 +90,8 @@ void puzzle_two() {
 }
 
 
-int main() {
- 	fptr = fopen("input.txt", "r");
+int main()  {
+ 	fptr = fopen("example.txt", "r");
 	
 	if (fptr == NULL) {
 		perror("Error opening file");
