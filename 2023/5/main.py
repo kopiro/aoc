@@ -93,20 +93,20 @@ def puzzle_1(lines):
     if not steps:
         raise Exception("No path found")
     
-    min_traversing_value = float('inf')
+    min_tr_value = float('inf')
     steps.reverse()
 
     for seed in seeds:
-        traversing_value = seed
+        tr_value = seed
         for index in range(0, len(steps) - 1, 1):
             step = steps[index]
             key = step + "-to-" + steps[index + 1]
             if not key in mapping:
                 raise Exception("No key" + key + " found")
-            traversing_value = transform_value_by_mapping_src_dst(mapping[key], traversing_value)
-        min_traversing_value = min(min_traversing_value, traversing_value)
+            tr_value = transform_value_by_mapping_src_dst(mapping[key], tr_value)
+        min_tr_value = min(min_tr_value, tr_value)
     
-    return min_traversing_value
+    return min_tr_value
 
 def puzzle_2(lines):
     seeds, mapping = parse_lines(lines)
@@ -123,6 +123,22 @@ def puzzle_2(lines):
     if not steps:
         raise Exception("No path found")
     
+    # Merge fake ranges if they collide (in mapping)
+    # for mapping_key in mapping:
+    #     m = mapping[mapping_key]
+    #     new_range = []
+    #     for i in range(0, len(m) - 1, 1):
+    #         if m[i]["dst_end"] == m[i+1]["dst_start"]:
+    #             m[i]["dst_end"] = m[i+1]["dst_end"]
+    #             m[i]["len"] = m[i]["dst_end"] - m[i]["dst_start"]
+    #             print("Merging", m[i], m[i+1])
+    #             new_range.append(m[i])
+    #             i += 1
+    #         else:
+    #             new_range.append(m[i])
+    #     mapping[mapping_key] = new_range
+
+
     best = float('inf')
     steps.reverse()
 
