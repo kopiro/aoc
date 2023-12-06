@@ -41,7 +41,7 @@ void puzzle_one() {
 
 
 unsigned int parse_line_puzzle_two(char* line) {
-	char* ab = malloc(2 * sizeof(char));
+	char ab[3];
 	int verse, len = strlen(line);
 	ab[2] = '\0';
 	
