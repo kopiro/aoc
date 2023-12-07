@@ -111,13 +111,12 @@ def puzzle_2(lines):
     hands_with_score = []
     for line in lines:
         hand, bid = parse_line_puzzle_2(line)
-        # Fix hand by replacing X with best possible value
+        # Fix hand by replacing "1" (the jocker) with best possible value
         hand_without_jocker = replace_jocker(hand)
         score = parse_poker_hand_puzzle_2(hand, hand_without_jocker)
         hands_with_score.append({
             "line": line,
             "bid": bid,
-            "hand_without_jocker": hand_without_jocker,
             "score": score
         })
     
@@ -128,7 +127,6 @@ def puzzle_2(lines):
     res = 0
     for rank, hand in enumerate(hands_with_score):
         x = hand['bid'] * (1+rank)
-        print(hand, x)
         res += x
 
     return res
