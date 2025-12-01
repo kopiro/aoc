@@ -16,7 +16,7 @@ if [ -z "$2" ]; then
 fi
 
 if [ -z "$3" ]; then
-    echo "Please provide your language: python, rust, javascript"
+    echo "Please provide your language: python, rust, javascript, cpp"
     exit 1
 fi
 
@@ -32,17 +32,10 @@ download_input() {
         cargo new "$day" --bin --name "aoc_${year}_${day}"
         popd
         cp "./template/main.rs" "./${year}/${day}/main.rs"
-    elif [ "$lang" = "python" ]; then
-        mkdir -p "./${year}/${day}"
-        cp "./template/main.py" "./${year}/${day}/main.py"
-    elif [ "$lang" = "javascript" ]; then
-        mkdir -p "./${year}/${day}"
-        cp "./template/main.js" "./${year}/${day}/main.js"
     else
-        echo "Language $lang not supported"
+        mkdir -p "./${year}/${day}"
+        cp "./template/main.${lang}" "./${year}/${day}/main.${lang}"
     fi
-
-    mkdir -p "./${year}/${day}"
     
     if [ ! -f "./${year}/${day}/input.html" ]; then
         echo "Downloading HTML input ${year}/${day}..."
