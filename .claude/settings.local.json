@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gcc:*)",
+      "Bash(./main)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

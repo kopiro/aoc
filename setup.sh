@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export $(grep -v '^#' .env | xargs)
+
 if [ -z "$AOC_SESSION" ]; then
     echo "Please provide your cookie as AOC_SESSION"
     exit 1
@@ -25,17 +27,11 @@ download_input() {
     day=$2
     lang=$3
 
-    mkdir -p "./${year}"
-
-    if [ "$lang" = "rust" ]; then
-        pushd "./${year}"
-        cargo new "$day" --bin --name "aoc_${year}_${day}"
-        popd
-        cp "./template/main.rs" "./${year}/${day}/main.rs"
-    else
-        mkdir -p "./${year}/${day}"
+    mkdir -p "./${year}/${day}"
+    if [ ! -f "./${year}/${day}/main.${lang}" ]; then
         cp "./template/main.${lang}" "./${year}/${day}/main.${lang}"
     fi
+    
     
     if [ ! -f "./${year}/${day}/input.html" ]; then
         echo "Downloading HTML input ${year}/${day}..."
