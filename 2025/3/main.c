@@ -33,7 +33,8 @@ long long puzzle_2() {
     long long total = 0;
     int max_index_before = -1;
     for (int bc = battery_count - 1; bc >= 0; bc--) {
-      // Find the first max unless it's last
+      // Find the first max in the first [0:len-bc], with bc slowly decreasing
+      // from 12 to 0
       int max = 0, max_index = 0;
       for (int j = max_index_before + 1; j < strlen(battery) - bc; j++) {
         int current = (int)(battery[j] - '0');
