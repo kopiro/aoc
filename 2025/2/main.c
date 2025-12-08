@@ -68,6 +68,83 @@ long long puzzle_1() {
   return result;
 }
 
+int compare_ll(const void *a, const void *b) {
+  long long x = *(long long *)a;
+  long long y = *(long long *)b;
+  if (x < y)
+    return -1;
+  if (x > y)
+    return 1;
+  return 0;
+}
+
+// Generate repeating-pattern numbers directly instead of brute forcing
+long long puzzle_2_fast() {
+  char line_copy[MAX_LINE_LENGTH];
+  strcpy(line_copy, lines[0]);
+  char *token = strtok(line_copy, ",");
+  long long total = 0;
+
+  while (token) {
+    long long a = 0, b = 0;
+    sscanf(token, "%lld-%lld", &a, &b);
+
+    if (b < a) {
+      long long tmp = a;
+      a = b;
+      b = tmp;
+    }
+
+    // Collect all matching numbers (static to avoid stack issues)
+    static long long matches[2000000];
+    int match_count = 0;
+
+    // For each pattern length (1 to 10 digits)
+    for (int pattern_len = 1; pattern_len <= 10; pattern_len++) {
+      // Calculate range of base patterns (e.g., 1-9 for len=1, 10-99 for len=2)
+      long long min_base = 1;
+      for (int i = 1; i < pattern_len; i++)
+        min_base *= 10;
+      long long max_base = min_base * 10 - 1;
+
+      // Multiplier for concatenation
+      long long multiplier = 1;
+      for (int i = 0; i < pattern_len; i++)
+        multiplier *= 10;
+
+      // For each number of repetitions (at least 2)
+      for (int num_repeats = 2; pattern_len * num_repeats <= 20;
+           num_repeats++) {
+        for (long long base = min_base; base <= max_base; base++) {
+          // Construct the repeated number: base repeated num_repeats times
+          long long num = 0;
+          for (int r = 0; r < num_repeats; r++) {
+            num = num * multiplier + base;
+          }
+
+          if (num >= a && num <= b) {
+            matches[match_count++] = num;
+          }
+        }
+      }
+    }
+
+    // Sort and sum unique values
+    qsort(matches, match_count, sizeof(long long), compare_ll);
+
+    long long prev = -1;
+    for (int i = 0; i < match_count; i++) {
+      if (matches[i] != prev) {
+        total += matches[i];
+        prev = matches[i];
+      }
+    }
+
+    token = strtok(NULL, ",");
+  }
+  return total;
+}
+
 long long puzzle_2() {
   char *line = lines[0];
   char *token = strtok(line, ",");

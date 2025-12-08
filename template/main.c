@@ -29,6 +29,6 @@ long long puzzle_2() { return 0; }
 int main() {
   read_input_file();
   printf("Puzzle 1: %lld\n", puzzle_1());
-  // printf("Puzzle 2: %d\n", puzzle_2());
+  // printf("Puzzle 2: %lld\n", puzzle_2());
   return 0;
 }
